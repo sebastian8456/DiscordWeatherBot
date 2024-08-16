@@ -1,1 +1,1 @@
-Usage: /weather <city> <Weekday>
+Usage: /weather \<city\> \<Day of the week\>
