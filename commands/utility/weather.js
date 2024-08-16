@@ -1,17 +1,18 @@
 import { SlashCommandBuilder } from "discord.js";
 import fetch from "node-fetch";
 
-const cities = ["Norridge", "Chicago", "Seattle"]; // TODO: incorportate into choices
+const cities = ["Atlanta", "Chicago", "Seattle"]; // TODO: incorportate into choices
+var cities_dict = [];
+
+for (var city of cities) {
+    cities_dict.push({"name": city, "value": city});
+}
 
 export const data = new SlashCommandBuilder().setName(`weather`).setDescription('Replies with the weather').addStringOption(option => 
     option.setName('city')
     .setDescription('The city to find weather for.')
     .setRequired(true)
-    .addChoices( // TODO add more choices, use list comprehension
-        {name: "Norridge", value: "Norridge"},
-        {name: "Chicago", value: "Chicago"},
-        {name: "Seattle", value: "Seattle"},
-    )
+    .addChoices(cities_dict)
 );
 
 export async function execute(interaction) {
